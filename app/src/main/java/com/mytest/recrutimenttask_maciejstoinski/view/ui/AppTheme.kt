@@ -7,6 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+val app_caption = Color.DarkGray
+val app_divider_color = Color.LightGray
+
 private val app_red = Color(0xFFE30425)
 private val app_white = Color.White
 private val app_purple_700 = Color(0xFF720D5D)

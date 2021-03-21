@@ -7,7 +7,7 @@ import com.mytest.recrutimenttask_maciejstoinski.view.ui.AppTheme
 
 
 @Composable
-fun Home(content: @Composable () -> Unit) {
+fun AppScaffold(content: @Composable () -> Unit) {
     AppTheme {
         Surface(color = MaterialTheme.colors.primary) {
             content()

@@ -38,7 +38,7 @@ fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
         val currentOnTimeout by rememberUpdatedState(onTimeout)
 
         LaunchedEffect(Unit) {
-            // only for showoff purpose, usually I'd never use something like this
+            // only for showoff purpose, usually I don't use something like this
             delay(SplashWaitTime)
             currentOnTimeout()
         }
