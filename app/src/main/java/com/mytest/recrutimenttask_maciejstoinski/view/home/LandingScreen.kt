@@ -19,12 +19,14 @@ package com.mytest.recrutimenttask_maciejstoinski.view.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import com.mytest.recrutimenttask_maciejstoinski.R
 import kotlinx.coroutines.delay
@@ -42,6 +44,11 @@ fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
             delay(SplashWaitTime)
             currentOnTimeout()
         }
-        Image(painterResource(id = R.drawable.untilted), contentDescription = null)
+        Icon(
+            tint = Color.White,
+            painter = painterResource(
+                id = R.drawable.untilted),
+                contentDescription = null
+            )
     }
 }
