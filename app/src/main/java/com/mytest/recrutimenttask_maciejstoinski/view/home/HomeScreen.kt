@@ -1,15 +1,11 @@
 package com.mytest.recrutimenttask_maciejstoinski.view.home
 
 import android.util.Log
-import android.view.MenuItem
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -22,7 +18,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mytest.recrutimenttask_maciejstoinski.base.ExploreSection
 import com.mytest.recrutimenttask_maciejstoinski.model.CityDetail
 import com.mytest.recrutimenttask_maciejstoinski.viewmodel.MainViewModel
-import kotlinx.coroutines.launch
 
 typealias OnCityDetailItemClicked = (CityDetail) -> Unit
 
@@ -160,8 +155,12 @@ private fun SearchContent(
 ) {
     Box() {
         CitiesSearchContent(SearchContentUpdates(
-            onFindLowestTemperatureClicked = {
-                Log.i("Lowest temp clicked", "Find lowest temp clicked")
+            onFindSmallestTemperatureClicked = {
+                Log.i("Smallest temp clicked", "Find smallest temp clicked")
+                viewmodel.findLowestTemperature()
+            },
+            onFindSmallestAverageDailyTemp = {
+                Log.i("Average temp clicked", "Find smallest average daily temp")
                 viewmodel.findLowestTemperature()
             }
         ))
@@ -175,7 +174,8 @@ private fun SearchContent(
 }
 
 data class SearchContentUpdates(
-    val onFindLowestTemperatureClicked: () -> Unit
+    val onFindSmallestTemperatureClicked: () -> Unit,
+    val onFindSmallestAverageDailyTemp: () -> Unit
 )
 
 enum class Filter { Reset }

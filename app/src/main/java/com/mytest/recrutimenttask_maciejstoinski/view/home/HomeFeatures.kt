@@ -15,18 +15,25 @@ import com.mytest.recrutimenttask_maciejstoinski.R
 @Composable
 fun CitiesSearchContent(searchContentUpdates: SearchContentUpdates) {
     CitySearch {
-        FindSmallestTemperature(
-            modifier = Modifier.clickable(onClick = searchContentUpdates.onFindLowestTemperatureClicked),
+        FilterFindCity(
+            modifier = Modifier.clickable(onClick = searchContentUpdates.onFindSmallestTemperatureClicked),
             vectorImageId = R.drawable.ic_search
         ) {
-            Text(text = "Find lowest temperature", style = MaterialTheme.typography.body1.copy(color = Color.White))
+            Text(text = "Find smallest temperature", style = MaterialTheme.typography.body1.copy(color = Color.White))
+        }
+        Spacer(Modifier.height(8.dp))
+        FilterFindCity(
+            modifier = Modifier.clickable(onClick = searchContentUpdates.onFindSmallestAverageDailyTemp),
+            vectorImageId = R.drawable.ic_search
+        ) {
+            Text(text = "Find smallest average temperature", style = MaterialTheme.typography.body1.copy(color = Color.White))
         }
         Spacer(Modifier.height(8.dp))
     }
 }
 
 @Composable
-fun FindSmallestTemperature(
+fun FilterFindCity(
     modifier: Modifier = Modifier,
     @DrawableRes vectorImageId: Int? = null,
     content: @Composable () -> Unit,
@@ -58,7 +65,7 @@ fun FindSmallestTemperature(
 
 @Composable
 private fun CitySearch(content: @Composable () -> Unit) {
-    Column(Modifier.padding(start = 24.dp, top = 0.dp, end = 24.dp, bottom = 12.dp)) {
+    Column(Modifier.padding(start = 24.dp, top = 12.dp, end = 24.dp, bottom = 12.dp)) {
         content()
     }
 }
