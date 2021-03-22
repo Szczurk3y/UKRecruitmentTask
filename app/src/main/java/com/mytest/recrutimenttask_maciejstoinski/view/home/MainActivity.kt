@@ -71,7 +71,11 @@ private fun MainContent(
 ) {
     Column(modifier = modifier) {
         Spacer(modifier = Modifier.padding(top = topPadding))
-        AppHome()
+        AppHome(
+            onCityDetailItemClicked = { cityDetail ->
+
+            }
+        )
     }
 }
 

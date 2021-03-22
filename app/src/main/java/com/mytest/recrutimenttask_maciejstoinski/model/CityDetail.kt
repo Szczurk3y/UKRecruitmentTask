@@ -1,24 +1,21 @@
 package com.mytest.recrutimenttask_maciejstoinski.model
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CityDetail(
-    val name: String,
+    @Json(name = "city") val name: String,
     val weather: Weather,
-    val hourlyTemps: List<HourlyTemp>
+    @Json(name = "hourly_temp") val hourlyTemps: List<HourlyTemp>
 ): Parcelable {
 
     @Parcelize
     data class HourlyTemp(
-        val temp: Int,
+        val temp: Float,
         val hour: Int
     ): Parcelable
-
-    companion object {
-        val providedCities = json
-    }
 }
 
 enum class Weather {

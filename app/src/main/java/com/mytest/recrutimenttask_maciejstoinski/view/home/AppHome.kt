@@ -9,21 +9,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mytest.recrutimenttask_maciejstoinski.base.ExploreSection
 import com.mytest.recrutimenttask_maciejstoinski.model.CityDetail
+import com.mytest.recrutimenttask_maciejstoinski.viewmodel.MainViewModel
 
 typealias OnCityDetailItemClicked = (CityDetail) -> Unit
 
 @Composable
-fun AppHome() {
+fun AppHome(
+    onCityDetailItemClicked: OnCityDetailItemClicked,
+    modifier: Modifier = Modifier
+) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     Column {
         val scope = rememberCoroutineScope()
+        AppHomeContent(
+            onCityDetailItemClicked = onCityDetailItemClicked,
+            modifier = modifier,
+        )
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AppHomeContent(
-    onCityDetailItemClicked: OnCityDetailItemClicked
+    onCityDetailItemClicked: OnCityDetailItemClicked,
     modifier: Modifier = Modifier
 ) {
     val viewModel: MainViewModel = viewModel()
@@ -34,13 +42,17 @@ fun AppHomeContent(
         frontLayerScrimColor = Color.Transparent,
         appBar = { HomeBar() },
         backLayerContent = {
-
+            SearchContent(
+                viewModel = viewModel,
+                onCityDetailItemClicked
+            )
         },
         frontLayerContent = {
             ExploreSection(
-                title = "All cities",
-                citiesList = ,
-                onItemClicked = { onCityDetailItemClicked })
+                title = "Available cities:",
+                citiesList = viewModel.cities,
+                onItemClicked = onCityDetailItemClicked
+            )
         }
     )
 }
@@ -56,7 +68,8 @@ private fun HomeBar(
 
 @Composable
 private fun SearchContent(
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    onCityDetailItemClicked: OnCityDetailItemClicked
 ) {
 
 }

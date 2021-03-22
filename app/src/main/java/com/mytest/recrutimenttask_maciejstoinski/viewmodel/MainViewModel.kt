@@ -1,18 +1,17 @@
-package com.mytest.recrutimenttask_maciejstoinski.view.home
+package com.mytest.recrutimenttask_maciejstoinski.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mytest.recrutimenttask_maciejstoinski.data.CitiesRepository
 import com.mytest.recrutimenttask_maciejstoinski.model.CityDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-
+    citiesRepository: CitiesRepository
 ): ViewModel() {
 
-    private val _cities = MutableLiveData<List<CityDetail>>()
-    val cities: LiveData<List<CityDetail>> get() = _cities
-
+    val cities: List<CityDetail> = citiesRepository.cities
 }
