@@ -75,8 +75,8 @@ fun AppHomeContent(
             ) { filter ->
                 when(filter) {
                     Filter.Reset -> {
-                        // TODO("add viewmodel here")
                         Log.i("Reset clicked", "bump!")
+                        viewmodel.resetCities()
                         showMenu.value = false
                     }
                 }
@@ -125,7 +125,6 @@ fun FilterMenu(
 ) {
     Card(
         modifier = modifier
-            .padding(8.dp)
             .animateContentSize(),
         elevation = 8.dp
     ) {
@@ -146,11 +145,10 @@ private fun MenuItem(
 {
     Row(
         modifier = Modifier
-            .padding(8.dp)
             .clickable(onClick = onFilterChange),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = name, modifier = Modifier.padding(8.dp))
+        Text(text = name, modifier = Modifier.padding(16.dp))
     }
 }
 

@@ -34,4 +34,8 @@ class MainViewModel @Inject constructor(
             _citiesLiveData.value = listOf(tempCities.first())
         }
     }
+
+    fun resetCities() {
+        _citiesLiveData.value = cities
+    }
 }
