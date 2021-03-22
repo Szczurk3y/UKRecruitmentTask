@@ -62,24 +62,6 @@ private fun CityItem(
             .clickable { onItemClicked(item) }
             .padding(top = 12.dp, bottom = 12.dp)
     ) {
-//        ExploreImageContainer {
-//            CoilImage(
-//                data = item.imageUrl,
-//                fadeIn = true,
-//                contentScale = ContentScale.Crop,
-//                contentDescription = null,
-//                loading = {
-//                    Box(Modifier.fillMaxSize()) {
-//                        Image(
-//                            modifier = Modifier.size(36.dp).align(Alignment.Center),
-//                            painter = painterResource(id = R.drawable.ic_crane_logo),
-//                            contentDescription = null
-//                        )
-//                    }
-//                }
-//            )
-//        }
-//        Spacer(Modifier.width(24.dp))
         Column {
             Text(
                 text = item.name,
