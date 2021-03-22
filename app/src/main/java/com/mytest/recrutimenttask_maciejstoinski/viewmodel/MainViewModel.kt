@@ -1,5 +1,6 @@
 package com.mytest.recrutimenttask_maciejstoinski.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,6 +39,9 @@ class MainViewModel @Inject constructor(
     fun findSmallestAverageDailyTemp() {
         val tempCities = cities.toMutableList()
         viewModelScope.launch {
+            tempCities.sortBy {
+                it.hourlyTemps.map { details -> details.temp }.average()
+            }
             _citiesLiveData.value = listOf(tempCities.first())
         }
     }

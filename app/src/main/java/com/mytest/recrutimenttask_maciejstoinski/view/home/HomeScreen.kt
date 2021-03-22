@@ -161,7 +161,7 @@ private fun SearchContent(
             },
             onFindSmallestAverageDailyTemp = {
                 Log.i("Average temp clicked", "Find smallest average daily temp")
-                viewmodel.findLowestTemperature()
+                viewmodel.findSmallestAverageDailyTemp()
             }
         ))
 
