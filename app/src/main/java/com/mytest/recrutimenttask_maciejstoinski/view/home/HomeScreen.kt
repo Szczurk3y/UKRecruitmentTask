@@ -130,7 +130,7 @@ fun FilterMenu(
     ) {
         Column(horizontalAlignment = Alignment.Start) {
             if (showMenu) {
-                MenuItem(name = "Reset") {
+                MenuItem(name = Filter.Reset.name) {
                     onFilterChange.invoke(Filter.Reset)
                 }
             }

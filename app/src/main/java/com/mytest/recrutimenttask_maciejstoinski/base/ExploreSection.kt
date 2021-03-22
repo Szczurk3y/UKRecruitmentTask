@@ -69,7 +69,7 @@ private fun CityItem(
             )
             Spacer(Modifier.height(8.dp))
             Text(
-                text = item.weather.name,
+                text = "${item.weather.name}, highest temp: ${item.hourlyTemps.map { it.temp }.maxOrNull()}",
                 style = MaterialTheme.typography.caption.copy(color = app_caption)
             )
         }
