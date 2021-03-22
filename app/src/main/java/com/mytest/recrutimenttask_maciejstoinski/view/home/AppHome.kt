@@ -1,8 +1,11 @@
 package com.mytest.recrutimenttask_maciejstoinski.view.home
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,7 +37,8 @@ fun AppHomeContent(
     onCityDetailItemClicked: OnCityDetailItemClicked,
     modifier: Modifier = Modifier
 ) {
-    val viewModel: MainViewModel = viewModel()
+    val viewmodel: MainViewModel = viewModel()
+    val citiesToDisplay by viewmodel.citiesLiveData.observeAsState()
 
     BackdropScaffold(
         modifier = modifier,
@@ -43,16 +47,17 @@ fun AppHomeContent(
         appBar = { HomeBar() },
         backLayerContent = {
             SearchContent(
-                viewModel = viewModel,
-                onCityDetailItemClicked
+                viewmodel = viewmodel
             )
         },
         frontLayerContent = {
-            ExploreSection(
-                title = "Available cities:",
-                citiesList = viewModel.cities,
-                onItemClicked = onCityDetailItemClicked
-            )
+            citiesToDisplay?.let { cities ->
+                ExploreSection(
+                    title = "Available cities:",
+                    citiesList = cities,
+                    onItemClicked = onCityDetailItemClicked
+                )
+            }
         }
     )
 }
@@ -68,8 +73,16 @@ private fun HomeBar(
 
 @Composable
 private fun SearchContent(
-    viewModel: MainViewModel,
-    onCityDetailItemClicked: OnCityDetailItemClicked
+    viewmodel: MainViewModel
 ) {
-
+    CitiesSearchContent(SearchContentUpdates(
+        onFindLowestTemperatureClicked = {
+            Log.i("Lowest temp clicked", "Find lowest temp clicked")
+            viewmodel.findLowestTemperature()
+        }
+    ))
 }
+
+data class SearchContentUpdates(
+    val onFindLowestTemperatureClicked: () -> Unit
+)

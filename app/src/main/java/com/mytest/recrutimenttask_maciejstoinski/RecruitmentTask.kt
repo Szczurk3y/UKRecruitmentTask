@@ -55,7 +55,7 @@ val json = """
           "city":"New York",
           "weather":"cloudy",
           "hourly_temp":[
-             { "temp":12, "hour":0 },
+             { "temp":0, "hour":0 },
              { "temp":13, "hour":4 },
              { "temp":12, "hour":8 },
              { "temp":15, "hour":12 },
